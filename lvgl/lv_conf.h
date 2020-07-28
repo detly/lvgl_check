@@ -80,7 +80,7 @@ typedef int16_t lv_coord_t;
 #define LV_MEM_CUSTOM      1
 #if LV_MEM_CUSTOM == 0
 /* Size of the memory used by `lv_mem_alloc` in bytes (>= 2kB)*/
-#  define LV_MEM_SIZE    (32U * 1024U)
+#  define LV_MEM_SIZE    (128U * 1024U)
 
 /* Complier prefix for a big array declaration */
 #  define LV_MEM_ATTR
@@ -151,7 +151,7 @@ typedef void * lv_anim_user_data_t;
 #endif
 
 /* 1: Enable shadow drawing*/
-#define LV_USE_SHADOW           1
+#define LV_USE_SHADOW           0
 #if LV_USE_SHADOW
 /* Allow buffering some shadow calculation
  * LV_SHADOW_CACHE_SIZE is the max. shadow size to buffer,
@@ -190,7 +190,7 @@ typedef void * lv_fs_drv_user_data_t;
 #endif
 
 /*1: Add a `user_data` to drivers and objects*/
-#define LV_USE_USER_DATA        0
+#define LV_USE_USER_DATA        1
 
 /*1: Show CPU usage and FPS count in the right bottom corner*/
 #define LV_USE_PERF_MONITOR     0
@@ -280,7 +280,7 @@ typedef void * lv_indev_drv_user_data_t;            /*Type of user data in the i
  *===============*/
 
 /*1: Enable the log module*/
-#define LV_USE_LOG      0
+#define LV_USE_LOG      1
 #if LV_USE_LOG
 /* How important log should be added:
  * LV_LOG_LEVEL_TRACE       A lot of logs to give detailed information
@@ -293,7 +293,7 @@ typedef void * lv_indev_drv_user_data_t;            /*Type of user data in the i
 
 /* 1: Print the log with 'printf';
  * 0: user need to register a callback with `lv_log_register_print_cb`*/
-#  define LV_LOG_PRINTF   0
+#  define LV_LOG_PRINTF   1
 #endif  /*LV_USE_LOG*/
 
 /*=================
@@ -347,15 +347,15 @@ typedef void * lv_indev_drv_user_data_t;            /*Type of user data in the i
 
 /* Montserrat fonts with bpp = 4
  * https://fonts.google.com/specimen/Montserrat  */
-#define LV_FONT_MONTSERRAT_12    0
+#define LV_FONT_MONTSERRAT_12    1
 #define LV_FONT_MONTSERRAT_14    0
 #define LV_FONT_MONTSERRAT_16    1
 #define LV_FONT_MONTSERRAT_18    0
 #define LV_FONT_MONTSERRAT_20    0
-#define LV_FONT_MONTSERRAT_22    0
+#define LV_FONT_MONTSERRAT_22    1
 #define LV_FONT_MONTSERRAT_24    0
 #define LV_FONT_MONTSERRAT_26    0
-#define LV_FONT_MONTSERRAT_28    0
+#define LV_FONT_MONTSERRAT_28    1
 #define LV_FONT_MONTSERRAT_30    0
 #define LV_FONT_MONTSERRAT_32    0
 #define LV_FONT_MONTSERRAT_34    0
@@ -368,14 +368,14 @@ typedef void * lv_indev_drv_user_data_t;            /*Type of user data in the i
 #define LV_FONT_MONTSERRAT_48    0
 
 /* Demonstrate special features */
-#define LV_FONT_MONTSERRAT_12_SUBPX      0
-#define LV_FONT_MONTSERRAT_28_COMPRESSED 0  /*bpp = 3*/
+#define LV_FONT_MONTSERRAT_12_SUBPX      1
+#define LV_FONT_MONTSERRAT_28_COMPRESSED 1  /*bpp = 3*/
 #define LV_FONT_DEJAVU_16_PERSIAN_HEBREW 0  /*Hebrew, Arabic, PErisan letters and all their forms*/
 #define LV_FONT_SIMSUN_16_CJK            0  /*1000 most common CJK radicals*/
 
 /*Pixel perfect monospace font
  * http://pelulamu.net/unscii/ */
-#define LV_FONT_UNSCII_8     0
+#define LV_FONT_UNSCII_8     1
 
 /* Optionally declare your custom fonts here.
  * You can use these fonts as default font too
@@ -452,7 +452,7 @@ typedef void * lv_font_user_data_t;
 
 /* If a word is at least this long, will break wherever "prettiest"
  * To disable, set to a value <= 0 */
-#define LV_TXT_LINE_BREAK_LONG_LEN          0
+#define LV_TXT_LINE_BREAK_LONG_LEN          12
 
 /* Minimum number of characters in a long word to put on a line before a break.
  * Depends on LV_TXT_LINE_BREAK_LONG_LEN. */
@@ -469,7 +469,7 @@ typedef void * lv_font_user_data_t;
  * Allows mixing Left-to-Right and Right-to-Left texts.
  * The direction will be processed according to the Unicode Bidirectioanl Algorithm:
  * https://www.w3.org/International/articles/inline-bidi-markup/uba-basics*/
-#define LV_USE_BIDI     0
+#define LV_USE_BIDI     1
 #if LV_USE_BIDI
 /* Set the default direction. Supported values:
  * `LV_BIDI_DIR_LTR` Left-to-Right
@@ -517,7 +517,7 @@ typedef void * lv_obj_user_data_t;
  * LV_EXT_CLICK_AREA_TINY: The extra area can be adjusted horizontally and vertically (0..255 px)
  * LV_EXT_CLICK_AREA_FULL: The extra area can be adjusted in all 4 directions (-32k..+32k px)
  */
-#define LV_USE_EXT_CLICK_AREA  LV_EXT_CLICK_AREA_TINY
+#define LV_USE_EXT_CLICK_AREA  LV_EXT_CLICK_AREA_OFF
 
 /*==================
  *  LV OBJ X USAGE
@@ -550,7 +550,7 @@ typedef void * lv_obj_user_data_t;
 /*Chart (dependencies: -)*/
 #define LV_USE_CHART    1
 #if LV_USE_CHART
-#  define LV_CHART_AXIS_TICK_LABEL_MAX_LEN    256
+#  define LV_CHART_AXIS_TICK_LABEL_MAX_LEN    20
 #endif
 
 /*Container (dependencies: -*/

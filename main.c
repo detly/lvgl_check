@@ -6,6 +6,12 @@
 #include "lv_drivers/display/monitor.h"
 #include "lv_drivers/indev/mouse.h"
 
+
+typedef struct {
+    lv_style_t one;
+    lv_style_t two;
+} my_styles_t;
+
 static void * tick_thread(void * arg)
 {
     const struct timespec period = {
@@ -48,10 +54,32 @@ void dev_init(void)
     lv_indev_drv_register(&indev_drv);
 }
 
+void ui_init(void)
+{
+    static my_styles_t * styles;
+
+    styles = lv_mem_alloc(sizeof(my_styles_t));
+
+    lv_obj_t * obj = lv_obj_create(lv_scr_act(), NULL);
+
+    lv_style_init(&styles->one);
+    lv_style_init(&styles->two);
+
+    lv_style_set_bg_color(&styles->one, LV_STATE_DEFAULT, LV_COLOR_GRAY);
+    lv_style_set_bg_color(&styles->two, LV_STATE_DEFAULT, LV_COLOR_RED);
+
+    lv_obj_reset_style_list(obj, LV_OBJ_PART_MAIN);
+
+    lv_obj_add_style(obj, LV_OBJ_PART_MAIN, &styles->one);
+    lv_obj_add_style(obj, LV_OBJ_PART_MAIN, &styles->two);
+    lv_obj_add_style(obj, LV_OBJ_PART_MAIN, &styles->two);
+}
+
 int main(int argc, char *argv[])
 {
     lv_init();
     dev_init();
+    ui_init();
 
     pthread_t pid;
     pthread_create(&pid, NULL, tick_thread, NULL);
