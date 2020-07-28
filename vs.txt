@@ -1,0 +1,41 @@
+{
+   <SDL1>
+   Memcheck:Addr4
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.10.0
+}
+
+{
+   <SDL2>
+   Memcheck:Addr8
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.10.0
+}
+
+{
+   <MESA1>
+   Memcheck:Addr4
+   ...
+   fun:glXCreateContext
+}
+
+{
+   <MESA2>
+   Memcheck:Addr8
+   ...
+   fun:glXCreateContext
+}
+
+{
+   <MESA3>
+   Memcheck:Addr4
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0
+}
+
+{
+   <MESA4>
+   Memcheck:Addr8
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0
+}
